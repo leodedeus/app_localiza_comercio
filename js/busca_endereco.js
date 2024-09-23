@@ -1,3 +1,6 @@
+// Variável global para armazenar o marcador atual
+//var marcadorAtual = null;
+
 // Função para buscar o endereço
 function buscarEndereco(endereco) {
     var url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(endereco)}&format=json&addressdetails=1`;
@@ -14,7 +17,13 @@ function buscarEndereco(endereco) {
                 var lat = data[0].lat;
                 var lon = data[0].lon;
 
-                L.marker([lat, lon]).addTo(map)
+                // Se houver um marcador existente, removê-lo
+                if (marcadorLocalAtual) {
+                    map.removeLayer(marcadorLocalAtual);
+                }
+
+                //Adiciona um novo marcador com endereço atual
+                marcadorLocalAtual = L.marker([lat, lon]).addTo(map)
                     .bindPopup(data[0].display_name)
                     .openPopup();
 
@@ -26,6 +35,10 @@ function buscarEndereco(endereco) {
         .catch(error => {
             console.error('Erro:', error);
             alert('Erro ao buscar o endereço');
+        })
+        .finally(() => {
+            // Limpa o valor do campo de endereço
+            document.getElementById('address').value = '';
         });
 }
 
