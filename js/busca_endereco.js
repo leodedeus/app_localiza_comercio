@@ -14,8 +14,9 @@ function buscarEndereco(endereco) {
         })
         .then(data => {
             if (data.length > 0) {
-                var lat = data[0].lat;
-                var lon = data[0].lon;
+                latMarcador = data[0].lat;
+                lonMarcador = data[0].lon;
+                console.log(`Coordenadas do endereço: ${latMarcador}, ${lonMarcador}`)
 
                 // Se houver um marcador existente, removê-lo
                 if (marcadorLocalAtual) {
@@ -23,11 +24,20 @@ function buscarEndereco(endereco) {
                 }
 
                 //Adiciona um novo marcador com endereço atual
-                marcadorLocalAtual = L.marker([lat, lon]).addTo(map)
+                marcadorLocalAtual = L.marker([latMarcador, lonMarcador], { draggable: true }).addTo(map)
                     .bindPopup(data[0].display_name)
                     .openPopup();
 
-                map.setView([lat, lon], 12);
+                map.setView([latMarcador, lonMarcador], 15);
+
+                // Lidar com o evento de arrastar o marcador
+                marcadorLocalAtual.on('dragend', function(event) {
+                    var newLatLng = event.target.getLatLng();
+                    latMarcador = newLatLng.lat;
+                    lonMarcador = newLatLng.lng;
+                    map.setView([newLatLng.lat, newLatLng.lng], 15);
+                    console.log(`Marcador movido para: ${latMarcador}, ${lonMarcador}`);
+                });
             } else {
                 alert('Endereço não encontrado');
             }

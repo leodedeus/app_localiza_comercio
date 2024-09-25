@@ -7,3 +7,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Variável global para armazenar o marcador atual
 var marcadorLocalAtual = null;
+
+//Variável global para armazenar as coordenadas do marcador
+var latMarcador = null;
+var lonMarcador = null;
