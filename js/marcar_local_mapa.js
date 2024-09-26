@@ -23,7 +23,7 @@ map.on('click', function(click) {
         }
 
         // Adicionar novo marcador no local do clique
-        marcadorLocalAtual = L.marker([latMarcador, lonMarcador], { draggable: true }).addTo(map)
+        marcadorLocalAtual = L.marker([latMarcador, lonMarcador], { icon: iconMarcadorLocalAtual, draggable: true }).addTo(map)
             .bindPopup('Localização marcada!')
             .openPopup();
 

@@ -24,7 +24,7 @@ function buscarEndereco(endereco) {
                 }
 
                 //Adiciona um novo marcador com endereço atual
-                marcadorLocalAtual = L.marker([latMarcador, lonMarcador], { draggable: true }).addTo(map)
+                marcadorLocalAtual = L.marker([latMarcador, lonMarcador], { icon: iconMarcadorLocalAtual, draggable: true }).addTo(map)
                     .bindPopup(data[0].display_name)
                     .openPopup();
 
