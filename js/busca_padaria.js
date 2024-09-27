@@ -1,27 +1,29 @@
-function buscarSupermercados(lat, lon) {
+function buscarPadaria(lat, lon) {
     const url = `https://overpass-api.de/api/interpreter?data=[out:json];(
-        node["shop"="supermarket"](around:3000,${lat},${lon});
-        way["shop"="supermarket"](around:3000,${lat},${lon});
-        relation["shop"="supermarket"](around:3000,${lat},${lon});
+        node["shop"="bakery"](around:3000,${lat},${lon});
+        way["shop"="bakery"](around:3000,${lat},${lon});
+        relation["shop"="bakery"](around:3000,${lat},${lon});
     );out body;`;
     console.log(`Url buscada: ${url}`)
+
+    const bounds = L.latLngBounds();
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            data.elements.forEach(function(supermercado) {
-                if (supermercado.type === "node") {
+            data.elements.forEach(function(padaria) {
+                if (padaria.type === "node") {
                     // Se for um nó, temos latitude e longitude
-                    if (supermercado.lat && supermercado.lon) {
-                        L.marker([supermercado.lat, supermercado.lon]).addTo(map)
-                            .bindPopup('Supermercado: ' + (supermercado.tags.name || 'Desconhecido'))
-                            .openPopup();
+                    if (padaria.lat && padaria.lon) {
+                        L.marker([padaria.lat, padaria.lon]).addTo(map)
+                            .bindPopup('Padaria: ' + (padaria.tags.name || 'Desconhecido'));
+                        bounds.extend([padaria.lat, padaria.lon]);
                     }
-                } else if (supermercado.type === "way") {
+                } else if (padaria.type === "way") {
                     // Para "ways", verificamos se existe "center"
-                    if (supermercado.nodes) {
-                        console.log(supermercado.tags.name, supermercado.nodes)
-                        const firstNodeId = supermercado.nodes[0]
+                    if (padaria.nodes) {
+                        console.log(padaria.tags.name, padaria.nodes)
+                        const firstNodeId = padaria.nodes[0]
                         console.log(`Primeiro nó: ${firstNodeId}`)
                         const urlNode = `https://overpass-api.de/api/interpreter?data=[out:json];node(${firstNodeId});out;`;
                         console.log(`Url do no: ${urlNode}`)
@@ -31,25 +33,28 @@ function buscarSupermercados(lat, lon) {
                                 data.elements.forEach(function(node) {
                                     if (node.lat && node.lon) {
                                         L.marker([node.lat, node.lon]).addTo(map)
-                                        .bindPopup('Supermercado: ' + (supermercado.tags.name || 'Desconhecido'))
-                                        .openPopup();
+                                        .bindPopup('Padaraia: : ' + (padaria.tags.name || 'Desconhecido'));
+                                    bounds.extend([node.lat, node.lon]);
                                     }
                                 });
                             });
                     } else {
                         console.log('Way encontrado, mas sem centro definido.');
                     }
-                } else if (supermercado.type === "relation") {
+                } else if (padaria.type === "relation") {
                     // Similar para relações, verificar centro
-                    if (supermercado.center) {
-                        L.marker([supermercado.center.lat, supermercado.center.lon]).addTo(map)
-                            .bindPopup('Supermercado (Relação): ' + (supermercado.tags.name || 'Desconhecido'))
-                            .openPopup();
+                    if (padaria.center) {
+                        L.marker([padaria.center.lat, padaria.center.lon]).addTo(map)
+                            .bindPopup('Supermercado (Relação): ' + (padaria.tags.name || 'Desconhecido'));
                     } else {
                         console.log('Relação encontrada, mas sem centro definido.');
                     }
                 }
             });
+            // Ajusta o zoom do mapa para mostrar todos os marcadores
+            if (bounds.isValid()) {  // Verifica se os limites são válidos
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
         })
         .catch(error => {
             console.error('Erro ao buscar supermercados:', error);
@@ -57,10 +62,11 @@ function buscarSupermercados(lat, lon) {
 }
 
 // Lida com o clique no botão
-document.getElementById('searchPoiBtn').addEventListener('click', function() {
+document.getElementById('searchPadariaBtn').addEventListener('click', function() {
     if (marcadorLocalAtual) {
-        buscarSupermercados(latMarcador, lonMarcador);
+        buscarPadaria(latMarcador, lonMarcador);
     } else {
         alert('Por favor, adicione um marcador no mapa primeiro.');
+
     }
 });

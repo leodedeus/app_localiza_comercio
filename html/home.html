@@ -15,18 +15,23 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
-    <div>
+    <div class="top-bar">
         <input id="address" type="text" placeholder="Digite um endereço">
         <button id="searchEndBtn">Buscar</button>
-        <button id="searchMapBtn">Marcar no Mapa</button>
+        <button id="searchMapBtn">Marcar Local no Mapa</button>
         <button id="limparMarcadorBtn">Limpar Marcador</button>
-        <button id="searchPoiBtn">Buscar Ponto de Interesse</button>
+        <button id="searchSupermercadoBtn">Buscar Supermercados</button>
+        <button id="searchPadariaBtn">Buscar Padarias</button>
+    </div>
+
+    <!-- Mapa -->
     <div id="map"></div>
 
     <script src="../js/mapa.js"></script>
     <script src="../js/busca_endereco.js"></script>
     <script src="../js/marcar_local_mapa.js"></script>
     <script src="../js/limpar_marcador.js"></script>
-    <script src="../js/busca_pois.js"></script>
+    <script src="../js/busca_supermercado.js"></script>
+    <script src="../js/busca_padaria.js"></script>
 </body>
 </html>
