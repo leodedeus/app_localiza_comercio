@@ -15,7 +15,7 @@ function buscarSupermercados(lat, lon) {
                 if (supermercado.type === "node") {
                     // Se for um nó, temos latitude e longitude
                     if (supermercado.lat && supermercado.lon) {
-                        L.marker([supermercado.lat, supermercado.lon]).addTo(map)
+                        marcadorSupermercadosA = L.marker([supermercado.lat, supermercado.lon], { icon: iconMarcadorSupermercado }).addTo(map)
                             .bindPopup('Supermercado: ' + (supermercado.tags.name || 'Desconhecido'));
                         bounds.extend([supermercado.lat, supermercado.lon]);
                     }
@@ -32,7 +32,7 @@ function buscarSupermercados(lat, lon) {
                             .then(data => {
                                 data.elements.forEach(function(node) {
                                     if (node.lat && node.lon) {
-                                        L.marker([node.lat, node.lon]).addTo(map)
+                                        marcadorSupermercadosB = L.marker([node.lat, node.lon], { icon: iconMarcadorSupermercado }).addTo(map)
                                         .bindPopup('Supermercado: ' + (supermercado.tags.name || 'Desconhecido'));
                                     bounds.extend([node.lat, node.lon]);
                                     }
@@ -44,7 +44,7 @@ function buscarSupermercados(lat, lon) {
                 } else if (supermercado.type === "relation") {
                     // Similar para relações, verificar centro
                     if (supermercado.center) {
-                        L.marker([supermercado.center.lat, supermercado.center.lon]).addTo(map)
+                        marcadorSupermercadosC = L.marker([supermercado.center.lat, supermercado.center.lon], { icon: iconMarcadorSupermercado }).addTo(map)
                             .bindPopup('Supermercado (Relação): ' + (supermercado.tags.name || 'Desconhecido'));
                     } else {
                         console.log('Relação encontrada, mas sem centro definido.');
