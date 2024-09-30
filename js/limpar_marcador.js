@@ -6,25 +6,22 @@ document.getElementById('limparMarcadorBtn').addEventListener('click', function(
 });
 
 document.getElementById('limparSupermercadoBtn').addEventListener('click', function() {
-    if (marcadorSupermercadosA) {
-        map.removeLayer(marcadorSupermercadosA);
-    }
-    if (marcadorSupermercadosB) {
-        map.removeLayer(marcadorSupermercadosB);
-    }
-    if (marcadorSupermercadosC) {
-        map.removeLayer(marcadorSupermercadosC);
-    }
+    marcadorSupermercados.forEach(function(marker) {
+        map.removeLayer(marker);
+    });
+    marcadorSupermercados = [];
 });
 
 document.getElementById('limparPadariaBtn').addEventListener('click', function() {
-    if (marcadorPadariasA) {
-        map.removeLayer(marcadorPadariasA);
-    }
-    if (marcadorPadariasB) {
-        map.removeLayer(marcadorPadariasB);
-    }
-    if (marcadorPadariasC) {
-        map.removeLayer(marcadorPadariasC);
-    }
+    marcadorPadarias.forEach(function(marker) {
+        map.removeLayer(marker);
+    });
+    marcadorPadarias = [];
+});
+
+document.getElementById('limparFarmaciaBtn').addEventListener('click', function() {
+    marcadorFarmacias.forEach(function(marker) {
+        map.removeLayer(marker);
+    });
+    marcadorFarmacias = [];
 });

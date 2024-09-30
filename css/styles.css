@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilos gerais */
 body, html {
     margin: 0;
@@ -43,4 +49,25 @@ body, html {
     height: calc(100% - 60px); /* Ajuste a altura para o restante da tela, 60px para a barra */
     width: calc(100% - 40px);  /* Largura com margem de 20px nas laterais */
     margin: 20px; /* Adiciona margem ao redor do mapa */
+}
+
+/*Configuração do loader*/
+#loader {
+    position: fixed; /* Para que o loader ocupe a tela inteira */
+    top: 0;
+    left: 0;
+    width: 100%; /* Largura total da tela */
+    height: 100%; /* Altura total da tela */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    display: flex; /* Flexbox para centralização */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    z-index: 9999; /* Certifica-se de que o loader está acima de outros elementos */
+    pointer-events: none; /* Evita interação com elementos atrás do loader */
+}
+
+#loader img {
+    background-color: transparent; /* Certifique-se de que o fundo da imagem seja transparente */
+    width: 100px;
+    height: 100px;
 }
