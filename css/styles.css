@@ -12,6 +12,25 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
+/* Estilo para a seção de cabeçalho com título e descrição */
+.header-section {
+    padding: 20px;
+    background-color: #f1f1f1; /* Cor de fundo leve para destacar a área */
+    text-align: center;
+    border-bottom: 2px solid #ccc; /* Linha inferior para separar a área */
+}
+
+.header-section h1 {
+    font-size: 24px;
+    color: #333; /* Cor do título */
+}
+
+.header-section p {
+    font-size: 16px;
+    color: #666; /* Cor da descrição */
+    margin-top: 10px;
+}
+
 /* Barra no topo */
 .top-bar {
     display: flex;
@@ -44,11 +63,68 @@ body, html {
     background-color: #0056b3;
 }
 
-/* O mapa ocupa o restante da tela */
+/* Contêiner principal com o mapa e os botões laterais */
+.main-container {
+    display: flex;
+    flex-direction: row; /* Dividindo em colunas */
+    height: calc(100vh - 160px); /* Ocupa o restante da tela, subtraindo a altura da barra e do título */
+}
+
+/* Estilo para o mapa */
 #map {
-    height: calc(100% - 60px); /* Ajuste a altura para o restante da tela, 60px para a barra */
-    width: calc(100% - 40px);  /* Largura com margem de 20px nas laterais */
-    margin: 20px; /* Adiciona margem ao redor do mapa */
+    flex: 3; /* O mapa ocupa a maior parte da largura */
+    margin: 20px;
+    height: calc(100% - 40px); /* Altura do mapa com margem */
+    border: 1px solid #ccc;
+}
+
+/* Contêiner dos botões ao lado do mapa */
+.side-buttons {
+    flex: 1; /* Os botões ocupam menos largura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha os botões ao topo */
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Cada linha com dois botões */
+.button-row {
+    display: flex;
+    justify-content: space-between; /* Alinha os botões lado a lado */
+    margin-bottom: 10px; /* Espaçamento entre as linhas */
+}
+
+/* Estilo dos botões "Buscar" */
+.buscarpoi-btn {
+    width: 68%; /* Largura menor para o botão "Limpar" */
+    background-color: #007bff !important; /* Força a cor vermelha */
+    color: white;
+    border: 1px solid #ccc;
+    padding: 10px; /* Certifique-se de que o padding está definido */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Botões "Buscar" ao passar o mouse */
+.buscarpoi-btn:hover {
+    background-color: #0056b3 !important;
+}
+
+/* Estilo dos botões "Limpar" */
+.limpar-btn {
+    width: 30%; /* Largura menor para o botão "Limpar" */
+    background-color: #dc3545 !important; /* Força a cor vermelha */
+    color: white;
+    border: 1px solid #dc3545;
+    padding: 10px; /* Certifique-se de que o padding está definido */
+    cursor: pointer;
+}
+
+/* Botões "Limpar" ao passar o mouse */
+.limpar-btn:hover {
+    background-color: #c82333 !important; /* Força a cor ao passar o mouse */
 }
 
 /*Configuração do loader*/
