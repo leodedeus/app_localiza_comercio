@@ -9,25 +9,28 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f9; /* Fundo leve */
+    color: #333;
 }
 
-/* Estilo para a seção de cabeçalho com título e descrição */
+/* Seção de cabeçalho */
 .header-section {
     padding: 20px;
-    background-color: #f1f1f1; /* Cor de fundo leve para destacar a área */
+    background-color: #ffffff;
     text-align: center;
-    border-bottom: 2px solid #ccc; /* Linha inferior para separar a área */
+    border-bottom: 2px solid #ddd;
 }
 
 .header-section h1 {
-    font-size: 24px;
-    color: #333; /* Cor do título */
+    font-size: 26px;
+    font-weight: 500;
+    color: #2c3e50;
 }
 
 .header-section p {
     font-size: 16px;
-    color: #666; /* Cor da descrição */
+    color: #7f8c8d;
     margin-top: 10px;
 }
 
@@ -37,113 +40,124 @@ body, html {
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
-    background-color: #f8f9fa;
-    box-shadow: 0px 4px 2px -2px gray;
-}
-
-.top-bar input, .top-bar button {
-    margin-right: 10px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .top-bar input {
     width: 500px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.top-bar input:focus {
+    border-color: #3498db;
 }
 
 .top-bar button {
-    background-color: #007bff;
-    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .top-bar button:hover {
-    background-color: #0056b3;
+    background-color: #2980b9;
 }
 
-/* Contêiner principal com o mapa e os botões laterais */
+/* Container principal */
 .main-container {
     display: flex;
-    flex-direction: row; /* Dividindo em colunas */
-    height: calc(100vh - 160px); /* Ocupa o restante da tela, subtraindo a altura da barra e do título */
+    height: calc(100vh - 190px);
 }
 
-/* Estilo para o mapa */
 #map {
-    flex: 3; /* O mapa ocupa a maior parte da largura */
+    flex: 3;
     margin: 20px;
-    height: calc(100% - 40px); /* Altura do mapa com margem */
-    border: 1px solid #ccc;
+    height: calc(100% - 40px);
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
 }
 
-/* Contêiner dos botões ao lado do mapa */
+/* Botões laterais */
 .side-buttons {
-    flex: 1; /* Os botões ocupam menos largura */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Alinha os botões ao topo */
+    flex: 1;
     padding: 20px;
-    background-color: #f8f9fa;
-    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    margin: 20px;
 }
 
-/* Cada linha com dois botões */
+.side-buttons h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
 .button-row {
     display: flex;
-    justify-content: space-between; /* Alinha os botões lado a lado */
-    margin-bottom: 10px; /* Espaçamento entre as linhas */
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
 }
 
-/* Estilo dos botões "Buscar" */
 .buscarpoi-btn {
-    width: 68%; /* Largura menor para o botão "Limpar" */
-    background-color: #007bff !important; /* Força a cor vermelha */
+    flex: 1;
+    background-color: #3498db;
     color: white;
-    border: 1px solid #ccc;
-    padding: 10px; /* Certifique-se de que o padding está definido */
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
     font-size: 14px;
-    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Botões "Buscar" ao passar o mouse */
 .buscarpoi-btn:hover {
-    background-color: #0056b3 !important;
+    background-color: #2980b9;
 }
 
-/* Estilo dos botões "Limpar" */
 .limpar-btn {
-    width: 30%; /* Largura menor para o botão "Limpar" */
-    background-color: #dc3545 !important; /* Força a cor vermelha */
+    flex: 0.4;
+    background-color: #e74c3c;
     color: white;
-    border: 1px solid #dc3545;
-    padding: 10px; /* Certifique-se de que o padding está definido */
-    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-/* Botões "Limpar" ao passar o mouse */
 .limpar-btn:hover {
-    background-color: #c82333 !important; /* Força a cor ao passar o mouse */
+    background-color: #c0392b;
 }
 
-/*Configuração do loader*/
+/* Loader */
 #loader {
-    position: fixed; /* Para que o loader ocupe a tela inteira */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Largura total da tela */
-    height: 100%; /* Altura total da tela */
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
-    display: flex; /* Flexbox para centralização */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    z-index: 9999; /* Certifica-se de que o loader está acima de outros elementos */
-    pointer-events: none; /* Evita interação com elementos atrás do loader */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 #loader img {
-    background-color: transparent; /* Certifique-se de que o fundo da imagem seja transparente */
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }

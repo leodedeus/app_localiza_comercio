@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para a seção de cabeçalho com título e descrição */
+.header-section {
+    padding: 20px;
+    background-color: #f1f1f1; /* Cor de fundo leve para destacar a área */
+    text-align: center;
+    border-bottom: 2px solid #ccc; /* Linha inferior para separar a área */
+}
+
+.header-section h1 {
+    font-size: 24px;
+    color: #333; /* Cor do título */
+}
+
+.header-section p {
+    font-size: 16px;
+    color: #666; /* Cor da descrição */
+    margin-top: 10px;
+}
+
+/* Barra no topo */
+.top-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0px 4px 2px -2px gray;
+}
+
+.top-bar input, .top-bar button {
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.top-bar input {
+    width: 500px;
+}
+
+.top-bar button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.top-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Contêiner principal com o mapa e os botões laterais */
+.main-container {
+    display: flex;
+    flex-direction: row; /* Dividindo em colunas */
+    height: calc(100vh - 190px); /* Ocupa o restante da tela, subtraindo a altura da barra e do título */
+    overflow: hidden;
+}
+
+/* Estilo para o mapa */
+#map {
+    flex: 3; /* O mapa ocupa a maior parte da largura */
+    margin: 20px;
+    height: calc(100% - 40px); /* Altura do mapa com margem */
+    border: 1px solid #ccc;
+}
+
+/* Contêiner dos botões ao lado do mapa */
+.side-buttons {
+    flex: 1; /* Os botões ocupam menos largura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha os botões ao topo */
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto; /* Caso haja muitos botões, permite rolagem apenas nessa área */
+}
+
+/* Cada linha com dois botões */
+.button-row {
+    display: flex;
+    justify-content: space-between; /* Alinha os botões lado a lado */
+    margin-bottom: 10px; /* Espaçamento entre as linhas */
+}
+
+/* Estilo dos botões "Buscar" */
+.buscarpoi-btn {
+    width: 68%; /* Largura menor para o botão "Limpar" */
+    background-color: #007bff !important; /* Força a cor vermelha */
+    color: white;
+    border: 1px solid #ccc;
+    padding: 10px; /* Certifique-se de que o padding está definido */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Botões "Buscar" ao passar o mouse */
+.buscarpoi-btn:hover {
+    background-color: #0056b3 !important;
+}
+
+/* Estilo dos botões "Limpar" */
+.limpar-btn {
+    width: 30%; /* Largura menor para o botão "Limpar" */
+    background-color: #dc3545 !important; /* Força a cor vermelha */
+    color: white;
+    border: 1px solid #dc3545;
+    padding: 10px; /* Certifique-se de que o padding está definido */
+    cursor: pointer;
+}
+
+/* Botões "Limpar" ao passar o mouse */
+.limpar-btn:hover {
+    background-color: #c82333 !important; /* Força a cor ao passar o mouse */
+}
+
+/*Configuração do loader*/
+#loader {
+    position: fixed; /* Para que o loader ocupe a tela inteira */
+    top: 0;
+    left: 0;
+    width: 100%; /* Largura total da tela */
+    height: 100%; /* Altura total da tela */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    display: flex; /* Flexbox para centralização */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    z-index: 9999; /* Certifica-se de que o loader está acima de outros elementos */
+    pointer-events: none; /* Evita interação com elementos atrás do loader */
+}
+
+#loader img {
+    background-color: transparent; /* Certifique-se de que o fundo da imagem seja transparente */
+    width: 100px;
+    height: 100px;
+}

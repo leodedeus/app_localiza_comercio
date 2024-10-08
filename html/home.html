@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Map</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
@@ -18,7 +17,7 @@
     <div class="header-section">
         <h1>Buscar Comércios Próximos</h1>
         <p>Esta aplicação permite que você busque supermercados, padarias e farmácias próximos ao seu local de interesse.</p>
-        <p>Digite um endereço na área de busca ou clique diretamente no mapa para marcar a localização desejada e buscar supermercados, padarias ou farmácias mais próximas.</p>
+        <p>Digite um endereço na área de busca ou clique em "Marcar local no mapa" para marcar a localização desejada e buscar supermercados, padarias ou farmácias mais próximas.</p>
     </div>
     <div class="top-bar">
         <input id="address" type="text" placeholder="Digite um endereço">
@@ -28,27 +27,23 @@
     </div>
 
     <div id="loader" style="display:none;">
-        <!-- Aqui você pode adicionar um ícone de carregamento ou texto -->
         <img src="../image/loader_busca_2.gif" alt="Buscando..." />
     </div>
     
     <div class="main-container">
-        <!-- Mapa -->
         <div id="map"></div>
-
-        <!-- Contêiner para os botões de "Buscar" e "Limpar" -->
         <div class="side-buttons">
             <h3>Objetos de Interesse</h3>
             <div class="button-row">
-                <button id="searchSupermercadoBtn" class="buscarpoi-btn">Buscar Supermercados</button>
+                <button id="searchSupermercadoBtn" class="buscarpoi-btn">Supermercados</button>
                 <button id="limparSupermercadoBtn" class="limpar-btn">Limpar</button>
             </div>
             <div class="button-row">
-                <button id="searchPadariaBtn" class="buscarpoi-btn">Buscar Padarias</button>
+                <button id="searchPadariaBtn" class="buscarpoi-btn">Padarias</button>
                 <button id="limparPadariaBtn" class="limpar-btn">Limpar</button>
             </div>
             <div class="button-row">
-                <button id="searchFarmaciaBtn" class="buscarpoi-btn">Buscar Farmácias</button>
+                <button id="searchFarmaciaBtn" class="buscarpoi-btn">Farmácias</button>
                 <button id="limparFarmaciaBtn" class="limpar-btn">Limpar</button>
             </div>
         </div>

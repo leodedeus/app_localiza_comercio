@@ -1,33 +1,9 @@
-var map = L.map('map').setView([-14.954406009810985, -56.34078703641914], 5);
+var map = L.map('map').setView([-15.836104636023594, -48.039736747741706], 12);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 20,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
-// Verifica se o navegador suporta geolocalização
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            // Obtém a latitude e longitude do usuário
-            var userLat = position.coords.latitude;
-            var userLng = position.coords.longitude;
-
-            // Centraliza o mapa na localização do usuário
-            map.setView([userLat, userLng], 12); // Ajusta o zoom conforme necessário
-
-            // Opcional: adiciona um marcador na localização do usuário
-            //L.marker([userLat, userLng]).addTo(map)
-            //    .bindPopup('Você está aqui!')
-            //    .openPopup();
-        },
-        function () {
-            map.setView([-14.954406009810985, -56.34078703641914], 5);
-        }
-    );
-} else {
-    map.setView([-14.954406009810985, -56.34078703641914], 5);
-}
 
 // Variável global para armazenar o marcador atual
 var marcadorLocalAtual = null;
