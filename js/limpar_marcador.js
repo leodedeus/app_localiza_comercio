@@ -25,3 +25,10 @@ document.getElementById('limparFarmaciaBtn').addEventListener('click', function(
     });
     marcadorFarmacias = [];
 });
+
+document.getElementById('limparPostosBtn').addEventListener('click', function() {
+    marcadorPostos.forEach(function(marker) {
+        map.removeLayer(marker);
+    });
+    marcadorPostos = [];
+});

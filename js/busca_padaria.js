@@ -34,18 +34,21 @@ function buscarPadaria(lat, lon) {
                         console.log(`Primeiro nó: ${firstNodeId}`)
                         const urlNode = `https://overpass-api.de/api/interpreter?data=[out:json];node(${firstNodeId});out;`;
                         console.log(`Url do no: ${urlNode}`)
-                        fetch(urlNode)
-                            .then(response => response.json())
-                            .then(data => {
-                                data.elements.forEach(function(node) {
-                                    if (node.lat && node.lon) {
-                                        let marker = L.marker([node.lat, node.lon], { icon: iconMarcadorPadaria }).addTo(map)
-                                        .bindPopup('Padaria: : ' + (padaria.tags.name || 'Desconhecido'));
-                                    marcadorPadarias.push(marker);
-                                    bounds.extend([node.lat, node.lon]);
-                                    }
-                                });
-                            });
+
+                        promises.push(
+                            fetch(urlNode)
+                                .then(response => response.json())
+                                .then(data => {
+                                    data.elements.forEach(function(node) {
+                                        if (node.lat && node.lon) {
+                                            let marker = L.marker([node.lat, node.lon], { icon: iconMarcadorPadaria }).addTo(map)
+                                                .bindPopup('Padaria: ' + (padaria.tags.name || 'Desconhecido'));
+                                            marcadorPadarias.push(marker);
+                                            bounds.extend([node.lat, node.lon]);
+                                        }
+                                    });
+                                })
+                        );
                     } else {
                         console.log('Way encontrado, mas sem centro definido.');
                     }

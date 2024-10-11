@@ -1,8 +1,8 @@
-function buscarFarmacia(lat, lon) {
+function buscarPostos(lat, lon) {
     const url = `https://overpass-api.de/api/interpreter?data=[out:json];(
-        node["amenity"="pharmacy"](around:3000,${lat},${lon});
-        way["amenity"="pharmacy"](around:3000,${lat},${lon});
-        relation["amenity"="pharmacy"](around:3000,${lat},${lon});
+        node["amenity"="fuel"](around:3000,${lat},${lon});
+        way["amenity"="fuel"](around:3000,${lat},${lon});
+        relation["amenity"="fuel"](around:3000,${lat},${lon});
     );out body;`;
     console.log(`Url buscada: ${url}`)
 
@@ -17,33 +17,33 @@ function buscarFarmacia(lat, lon) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            data.elements.forEach(function(farmacia) {
-                if (farmacia.type === "node") {
+            data.elements.forEach(function(posto) {
+                if (posto.type === "node") {
                     // Se for um nó, temos latitude e longitude
-                    if (farmacia.lat && farmacia.lon) {
-                        let marker = L.marker([farmacia.lat, farmacia.lon], { icon: iconMarcadorFarmacia }).addTo(map)
-                            .bindPopup('Farmácia: ' + (farmacia.tags.name || 'Desconhecido'));
-                        marcadorFarmacias.push(marker);
-                        bounds.extend([farmacia.lat, farmacia.lon]);
+                    if (posto.lat && posto.lon) {
+                        let marker = L.marker([posto.lat, posto.lon], { icon: iconMarcadorPosto }).addTo(map)
+                            .bindPopup('Posto: ' + (posto.tags.name || 'Desconhecido'));
+                        marcadorPostos.push(marker);
+                        bounds.extend([posto.lat, posto.lon]);
                     }
-                } else if (farmacia.type === "way") {
+                } else if (posto.type === "way") {
                     // Para "ways", verificamos se existe "center"
-                    if (farmacia.nodes) {
-                        console.log(farmacia.tags.name, farmacia.nodes)
-                        const firstNodeId = farmacia.nodes[0]
+                    if (posto.nodes) {
+                        console.log(posto.tags.name, posto.nodes)
+                        const firstNodeId = posto.nodes[0]
                         console.log(`Primeiro nó: ${firstNodeId}`)
                         const urlNode = `https://overpass-api.de/api/interpreter?data=[out:json];node(${firstNodeId});out;`;
                         console.log(`Url do no: ${urlNode}`)
-
+                        
                         promises.push(
                             fetch(urlNode)
                                 .then(response => response.json())
                                 .then(data => {
                                     data.elements.forEach(function(node) {
                                         if (node.lat && node.lon) {
-                                            let marker = L.marker([node.lat, node.lon], { icon: iconMarcadorFarmacia }).addTo(map)
-                                                .bindPopup('Farmácia: ' + (farmacia.tags.name || 'Desconhecido'));
-                                            marcadorFarmacias.push(marker);
+                                            let marker = L.marker([node.lat, node.lon], { icon: iconMarcadorPosto }).addTo(map)
+                                                .bindPopup('Posto: ' + (posto.tags.name || 'Desconhecido'));
+                                            marcadorPostos.push(marker);
                                             bounds.extend([node.lat, node.lon]);
                                         }
                                     });
@@ -52,12 +52,12 @@ function buscarFarmacia(lat, lon) {
                     } else {
                         console.log('Way encontrado, mas sem centro definido.');
                     }
-                } else if (farmacia.type === "relation") {
+                } else if (posto.type === "relation") {
                     // Similar para relações, verificar centro
-                    if (farmacia.center) {
-                        let marker = L.marker([farmacia.center.lat, farmarcia.center.lon], { icon: iconMarcadorFarmacia }).addTo(map)
-                            .bindPopup('Farmácia (Relação): ' + (farmacia.tags.name || 'Desconhecido'));
-                        marcadorFarmacias.push(marker);
+                    if (posto.center) {
+                        let marker = L.marker([posto.center.lat, posto.center.lon], { icon: iconMarcadorPosto }).addTo(map)
+                            .bindPopup('Posto (Relação): ' + (posto.tags.name || 'Desconhecido'));
+                        marcadorPostos.push(marker);
                     } else {
                         console.log('Relação encontrada, mas sem centro definido.');
                     }
@@ -69,7 +69,7 @@ function buscarFarmacia(lat, lon) {
             }
         })
         .catch(error => {
-            console.error('Erro ao buscar farmácias:', error);
+            console.error('Erro ao buscar postos:', error);
         })
         .finally(() => {
             // Oculte o loader somente após todas as promessas serem resolvidas
@@ -80,9 +80,9 @@ function buscarFarmacia(lat, lon) {
 }
 
 // Lida com o clique no botão
-document.getElementById('searchFarmaciaBtn').addEventListener('click', function() {
+document.getElementById('searchPostosBtn').addEventListener('click', function() {
     if (marcadorLocalAtual) {
-        buscarFarmacia(latMarcador, lonMarcador);
+        buscarPostos(latMarcador, lonMarcador);
     } else {
         alert('Por favor, adicione um marcador no mapa primeiro.');
 

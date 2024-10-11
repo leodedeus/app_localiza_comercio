@@ -17,7 +17,7 @@
     <div class="header-section">
         <h1>Buscar Comércios Próximos</h1>
         <p>Esta aplicação permite que você busque supermercados, padarias e farmácias próximos ao seu local de interesse.</p>
-        <p>Digite um endereço na área de busca ou clique em "Marcar local no mapa" para marcar a localização desejada e buscar supermercados, padarias ou farmácias mais próximas.</p>
+        <p>Use sua localização atual, digite um endereço na área de busca ou clique em "Marcar local no mapa" para marcar a localização desejada e buscar supermercados, padarias, farmácias ou postos de combustível mais próximos.</p>
     </div>
     <div class="top-bar">
         <input id="address" type="text" placeholder="Digite um endereço">
@@ -46,6 +46,10 @@
                 <button id="searchFarmaciaBtn" class="buscarpoi-btn">Farmácias</button>
                 <button id="limparFarmaciaBtn" class="limpar-btn">Limpar</button>
             </div>
+            <div class="button-row">
+                <button id="searchPostosBtn" class="buscarpoi-btn">Postos Combustível</button>
+                <button id="limparPostosBtn" class="limpar-btn">Limpar</button>
+            </div>
         </div>
     </div>
 
@@ -56,5 +60,6 @@
     <script src="../js/busca_supermercado.js"></script>
     <script src="../js/busca_padaria.js"></script>
     <script src="../js/busca_farmacia.js"></script>
+    <script src="../js/busca_postos.js"></script>
 </body>
 </html>
