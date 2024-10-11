@@ -28,37 +28,37 @@ var iconMarcadorLocalAtual = L.icon({
 var iconMarcadorSupermercado = L.icon({
     iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-blue.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-    iconSize: [30, 49.2],
-    iconAnchor: [15, 49],
-    popupAnchor: [1.5, -34],
-    shadowSize: [41, 41]
+    iconSize: [30 * 0.8, 49.2 * 0.8],
+    iconAnchor: [15 * 0.8, 49 * 0.8],
+    popupAnchor: [1.5 * 0.8, -34 * 0.8],
+    shadowSize: [41 * 0.8, 41 * 0.8]
 });
 
 var iconMarcadorPadaria = L.icon({
     iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-yellow.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-    iconSize: [30, 49.2],
-    iconAnchor: [15, 49],
-    popupAnchor: [1.5, -34],
-    shadowSize: [41, 41]
+    iconSize: [30 * 0.8, 49.2 * 0.8],
+    iconAnchor: [15 * 0.8, 49 * 0.8],
+    popupAnchor: [1.5 * 0.8, -34 * 0.8],
+    shadowSize: [41 * 0.8, 41 * 0.8]
 });
 
 var iconMarcadorFarmacia = L.icon({
     iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-red.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-    iconSize: [30, 49.2],
-    iconAnchor: [15, 49],
-    popupAnchor: [1.5, -34],
-    shadowSize: [41, 41]
+    iconSize: [30 * 0.8, 49.2 * 0.8],
+    iconAnchor: [15 * 0.8, 49 * 0.8],
+    popupAnchor: [1.5 * 0.8, -34 * 0.8],
+    shadowSize: [41 * 0.8, 41 * 0.8]
 });
 
 var iconMarcadorPosto = L.icon({
     iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-violet.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-    iconSize: [30, 49.2],
-    iconAnchor: [15, 49],
-    popupAnchor: [1.5, -34],
-    shadowSize: [41, 41]
+    iconSize: [30 * 0.8, 49.2 * 0.8],
+    iconAnchor: [15 * 0.8, 49 * 0.8],
+    popupAnchor: [1.5 * 0.8, -34 * 0.8],
+    shadowSize: [41 * 0.8, 41 * 0.8]
 });
 
 // Verifica se o navegador suporta geolocalização
